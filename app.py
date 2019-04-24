@@ -1,17 +1,11 @@
 import os
-from jinja2 import evalcontextfilter
-from flask import Flask, flash, redirect, render_template, request, session, abort, url_for
-from werkzeug.utils import secure_filename
-import shortuuid
+from flask import Flask, flash, redirect, render_template, request
 
 from topo import Topology
 
-
-UPLOAD_FOLDER = './upload'
 ALLOWED_EXTENSIONS = set(['csv', 'xlsx'])
 
 app = Flask(__name__)
-app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 @app.template_filter()
 def fnum(value):
