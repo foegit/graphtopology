@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+{% block title %}
+  Home
+{% endblock %}
+{% block content %}
+  <div class="loadFile">
+    <div class="description">
+      Завантажте файл з матрицею суміжності в форматі <strong>csv</strong>  або  <strong>xlsx</strong>. <a href="/fileformat">Детальніше</a>.
+    </div>
+    <form method=post enctype=multipart/form-data action="/topology">
+      <div class="fileInput">
+        <div class="path"></div>
+      </div>
+      <label for="file">
+        <div class="text" id='filelabel'>Обрати файл...</div>
+        <input type="file" id="file" name="file" >
+      </label>
+      <button class="btn success" type="submit" id="submitBtn" disabled=true>Надіслати</button>
+    </form>
+  <script src="{{ url_for('static', filename='loadfile.js')}}"></script>
+  </div>
+{% endblock %}
