@@ -3,129 +3,127 @@
 Home
 {% endblock %}
 {% block content %}
-  <div class="topology">
-    <h1>Топологічні характеристики</h1>
-    <div class="indicators">
-      <div class="tablewrapper">
-        <table class='topotable'>
-          <thead>
-            <td>Показники</td>
-            {% for node in t.nodes %}
-            <td>a{{ node + 1 }}</td>
-            {% endfor %}
-          </thead>
-          <tr>
-            <td>
-              Степінь вершин
-            </td>
-            {% for val in t.nodesDegree %}
+  <h1>Топологічні характеристики</h1>
+  <div class="indicators">
+    <div class="tablewrapper">
+      <table class='topotable'>
+        <thead>
+          <td>Показники</td>
+          {% for node in t.nodes %}
+          <td>a{{ node + 1 }}</td>
+          {% endfor %}
+        </thead>
+        <tr>
+          <td>
+            Степінь вершин
+          </td>
+          {% for val in t.nodesDegree %}
+          <td>{{ val | fnum }}</td>
+          {% endfor %}
+        </tr>
+        <tr>
+          <td>
+            Індекс доступності
+          </td>
+          {% for val in t.accessIndex %}
+            <td>{{ (val) | fnum }}</td>
+          {% endfor %}
+        </tr>
+        <tr>
+          <td>
+            Число Кеніга
+          </td>
+          {% for val in t.keniganNumber %}
             <td>{{ val | fnum }}</td>
-            {% endfor %}
-          </tr>
-          <tr>
-            <td>
-              Індекс доступності
-            </td>
-            {% for val in t.accessIndex %}
-              <td>{{ (val) | fnum }}</td>
-            {% endfor %}
-          </tr>
-          <tr>
-            <td>
-              Число Кеніга
-            </td>
-            {% for val in t.keniganNumber %}
-              <td>{{ val | fnum }}</td>
-            {% endfor %}
-          </tr>
-          <tr>
-            <td>
-              Індекс Балеваша
-            </td>
-            {% for val in t.balewashIndex %}
-            <td>{{ val | fnum }}</td>
-            {% endfor %}
-          </tr>
-          <tr>
-            <td>
-              Індекс Бічема
-            </td>
-            {% for val in t.bichemanIndex %}
-            <td>{{ val | fnum }}</td>
-            {% endfor %}
-          </tr>
-          <tr>
-            <td>
-              Альфа індекс
-            </td>
-            <td colspan="{{ t.nodes | length }}">
-              {{ t.alphaIndex | fnum }}
-            </td>
-          </tr>
-          <tr>
-            <td>
-              Бета індекс
-            </td>
-            <td colspan="{{ t.nodes | length }}">
-              {{ t.betaIndex | fnum }}
-            </td>
-          </tr>
-          <tr>
-            <td>
-              Бета індекс
-            </td>
-            <td colspan="{{ t.nodes | length }}">
-              {{ t.fitaIndex | fnum }}
-            </td>
-          </tr>
+          {% endfor %}
+        </tr>
+        <tr>
+          <td>
+            Індекс Балеваша
+          </td>
+          {% for val in t.balewashIndex %}
+          <td>{{ val | fnum }}</td>
+          {% endfor %}
+        </tr>
+        <tr>
+          <td>
+            Індекс Бічема
+          </td>
+          {% for val in t.bichemanIndex %}
+          <td>{{ val | fnum }}</td>
+          {% endfor %}
+        </tr>
+        <tr>
+          <td>
+            Альфа індекс
+          </td>
+          <td colspan="{{ t.nodes | length }}">
+            {{ t.alphaIndex | fnum }}
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Бета індекс
+          </td>
+          <td colspan="{{ t.nodes | length }}">
+            {{ t.betaIndex | fnum }}
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Бета індекс
+          </td>
+          <td colspan="{{ t.nodes | length }}">
+            {{ t.fitaIndex | fnum }}
+          </td>
+        </tr>
 
-        </table>
-      </div>  
+      </table>
+    </div>  
+  </div>
+  <h1>Матриця суміжності</h1>
+  <div class="matrixs">
+    <div class="adj_matrix">
+      <div class="tablelable">Матриця суміжності</div>
+      <table class="matrixtable">
+        <tr>
+          <td></td>
+          {% for node in t.nodes %}
+          <td>a{{ node + 1 }}</td>
+          {% endfor %}
+        </tr>
+        {% for i in range(0, t.nodes | length) %}
+        <tr>
+          <td>a{{ t.nodes[i] }}</td>
+          {% for j in range(0, t.adj_matrix | length) %}
+          <td>
+            {{ t.adj_matrix[i][j] | fnum }}
+          </td>
+          {% endfor %}
+        </tr>
+        {% endfor %}
+      </table>
     </div>
-    <h1>Матриця суміжності</h1>
-    <div class="matrixs">
-      <div class="adj_matrix">
-        <div class="tablelable">Матриця суміжності</div>
-        <table class="matrixtable">
-          <tr>
-            <td></td>
-            {% for node in t.nodes %}
-            <td>a{{ node + 1 }}</td>
-            {% endfor %}
-          </tr>
-          {% for i in range(0, t.nodes | length) %}
-          <tr>
-            <td>a{{ t.nodes[i] }}</td>
-            {% for j in range(0, t.adj_matrix | length) %}
-            <td>
-              {{ t.adj_matrix[i][j] | fnum }}
-            </td>
-            {% endfor %}
-          </tr>
+    <div class="d_matrix">
+      <div class="tablelable">Матриця відстаней</div>
+      <table class="matrixtable">
+        <tr>
+          <td></td>
+          {% for node in t.nodes %}
+          <td>a{{ node + 1 }}</td>
           {% endfor %}
-        </table>
-      </div>
-      <div class="d_matrix">
-        <div class="tablelable">Матриця відстаней</div>
-        <table class="matrixtable">
-          <tr>
-            <td></td>
-            {% for node in t.nodes %}
-            <td>a{{ node + 1 }}</td>
-            {% endfor %}
-          </tr>
-          {% for i in range(0, t.nodes | length) %}
-          <tr>
-            <td>a{{ t.nodes[i] }}</td>
-            {% for j in range(0, t.distance_matrix | length) %}
-            <td>
-              {{ t.distance_matrix[i][j] | fnum }}
-            </td>
-            {% endfor %}
-          </tr>
+        </tr>
+        {% for i in range(0, t.nodes | length) %}
+        <tr>
+          <td>a{{ t.nodes[i] }}</td>
+          {% for j in range(0, t.distance_matrix | length) %}
+          <td>
+            {{ t.distance_matrix[i][j] | fnum }}
+          </td>
           {% endfor %}
-        </table>
-      </div>
+        </tr>
+        {% endfor %}
+      </table>
     </div>
   </div>
 {% endblock %}
