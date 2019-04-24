@@ -3,6 +3,8 @@
   Home
 {% endblock %}
 {% block content %}
+<div class="load">
+
   <div class="loadFile">
     <div class="description">
       Завантажте файл з матрицею суміжності в форматі <strong>csv</strong>  або  <strong>xlsx</strong>.
@@ -19,5 +21,6 @@
       <button class="btn success" type="submit" id="submitBtn" disabled=true>Надіслати</button>
     </form>
   <script src="{{ url_for('static', filename='loadfile.js')}}"></script>
+  </div>
   </div>
 {% endblock %}

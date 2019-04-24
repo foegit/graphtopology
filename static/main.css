@@ -23,16 +23,17 @@ body {
 }
 .content {
   padding: 10px;
-  min-height: 100vh;
   padding: 20px;
+  flex: 1;
+  display: flex;
+  flex-direction: column; 
 }
 header {
   background: #33d383;
-  height: 60px;
+  height: 80px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-bottom: 1px solid #111;
 }
 
 header a {
@@ -158,12 +159,20 @@ h1:before {
   display: none;
 }
 
+.load {
+  min-height: 100%;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .loadFile {
+  height: 100%;
   width: 500px;
-  margin: 0 auto;
+  margin: auto;
   padding: 20px;
   border: 2px dashed #000;
-  margin-top: 200px;
   height: 200px;
   display: flex;
   justify-content: space-around;
@@ -256,4 +265,26 @@ form {
 
 .pimg img{
   border-radius: 5px;
+}
+
+footer {
+  height: 100px;
+  background: #ececec;
+  color: #444;
+  display: flex;
+  padding: 10px;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+footer .info {
+  font-size: 10pt;
+  color: #444;
+}
+
+footer .links {
+  width: 100%;
+  padding: 0 20px;
 }
